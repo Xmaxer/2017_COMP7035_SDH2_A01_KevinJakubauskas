@@ -6,40 +6,41 @@ public class MyDynamicQueue implements MyQueue {
 	//--------------------------------------------------
 	// Attributes
 	//--------------------------------------------------
-	private int numItems;
-	private int[] items;
-	private MyNode node = null;
-	private MyNode nextNode = null;
-	
+	private MyNode current = null;
+
 	//-------------------------------------------------------------------
 	// Basic Operation --> Check if MyQueue is empty: myCreateEmpty
 	//-------------------------------------------------------------------		
 	public MyDynamicQueue(){
-		this.numItems = 0;
-		this.items = new int[numItems];
+
 	}
 
 	//-------------------------------------------------------------------
 	// Basic Operation --> Check if MyQueue is empty: isEmpty
 	//-------------------------------------------------------------------	
 	public boolean isEmpty(){
-		
-		if(numItems == 0)
+
+		if(current == null)
 		{
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	//-------------------------------------------------------------------
 	// Basic Operation (Partial) --> Get first element from front of MyQueue: first
 	//-------------------------------------------------------------------
 	public int first(){
-		
-		if(numItems != 0)
+
+		if(current == null)
 		{
-			System.out.println("");
+			System.out.print("ERROR: MyQueue is empty.");
+			return -1;
+		}
+		else
+		{
+			return current.getInfo();
 		}
 	}
 
@@ -47,15 +48,39 @@ public class MyDynamicQueue implements MyQueue {
 	// Basic Operation --> Add element to back of MyQueue: add 
 	//-------------------------------------------------------------------
 	public void add(int element){
-		
-		if()
+
+		if(current == null)
+		{
+			current = new MyNode(element, null);
+		}
+		else
+		{
+			MyNode next = current.getNext();
+			MyNode previous = current;
+			
+			while(next != null)
+			{
+				previous = next;
+				next = next.getNext();
+			}
+			
+			previous.setNext(new MyNode(element, null));
+			
+		}
 	}
-	
+
 	//-------------------------------------------------------------------
 	// Basic Operation (Partial) --> Remove element from front of MyQueue: remove 
 	//-------------------------------------------------------------------	
 	public void remove(){
 
+		if(current == null)
+		{
+			System.out.println("ERROR: MyQueue is empty.");
+		}
+		else
+		{
+			current = current.getNext();
+		}
 	}
-	
 }
