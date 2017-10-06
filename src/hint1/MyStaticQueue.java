@@ -39,7 +39,8 @@ public class MyStaticQueue implements MyQueue {
 		{
 			return items[0];
 		}
-
+		
+		System.out.println("ERROR: MyQueue is empty.");
 		return -1;
 	}
 

@@ -6,7 +6,8 @@ public class MyDynamicQueue implements MyQueue {
 	//--------------------------------------------------
 	// Attributes
 	//--------------------------------------------------
-
+	private int numItems;
+	private int[] items;
 	
 	//-------------------------------------------------------------------
 	// Basic Operation --> Check if MyQueue is empty: myCreateEmpty
