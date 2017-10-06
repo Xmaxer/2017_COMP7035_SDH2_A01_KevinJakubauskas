@@ -6,8 +6,8 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//--------------------------------------------------
 	// Attributes
 	//--------------------------------------------------
-	private MyDoubleLinkedNode<T> current = null;
-	private MyDoubleLinkedNode<T> last = null;
+	private MyDoubleLinkedNode<T> head = null;
+	private MyDoubleLinkedNode<T> tail = null;
 
 	//-------------------------------------------------------------------
 	// Basic Operation --> Check if myQueue is empty: myCreateEmpty
@@ -21,7 +21,7 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------	
 	public boolean isEmpty(){
 
-		if(current == null)
+		if(head == null)
 		{
 			return true;
 		}
@@ -34,7 +34,7 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------
 	public T first(){
 
-		return current.getInfo();
+		return head.getInfo();
 	}
 
 	//-------------------------------------------------------------------
@@ -42,16 +42,16 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------
 	public void addByFirst(T element){
 
-		if(current == null)
+		if(head == null)
 		{
-			current = new MyDoubleLinkedNode<T>(null ,element, null);
-			last = current;
+			head = new MyDoubleLinkedNode<T>(null ,element, null);
+			tail = head;
 		}
 		else
 		{
-			MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(null , element, current);
-			current.setLeft(newNode);
-			current = newNode;
+			MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(null , element, head);
+			head.setLeft(newNode);
+			head = newNode;
 		}
 	}
 
@@ -60,13 +60,13 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------	
 	public void removeByFirst(){
 
-		if(current != null)
+		if(head != null)
 		{
-			current = current.getRight();
+			head = head.getRight();
 			
-			if(current != null)
+			if(head != null)
 			{
-				current.setLeft(null);
+				head.setLeft(null);
 			}
 			/*if(current.getRight() != null)
 			{
@@ -90,13 +90,13 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------
 	public T last(){
 
-		if(current == null)
+		if(head == null)
 		{
 			System.out.println("ERROR: List is empty.");
 			return null;
 		}
 		
-		return last.getInfo();
+		return tail.getInfo();
 
 	}
 
@@ -105,16 +105,16 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------
 	public void addByLast(T element){
 
-		if(current == null)
+		if(head == null)
 		{
-			current = new MyDoubleLinkedNode<T>(null, element, null);
-			last = current;
+			head = new MyDoubleLinkedNode<T>(null, element, null);
+			tail = head;
 		}
 		else
 		{
-			MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(last, element, null);
-			last.setRight(newNode);
-			last = newNode;
+			MyDoubleLinkedNode<T> newNode = new MyDoubleLinkedNode<T>(tail, element, null);
+			tail.setRight(newNode);
+			tail = newNode;
 		}
 	}
 
@@ -123,17 +123,17 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	//-------------------------------------------------------------------	
 	public void removeByLast(){
 
-		if(current == null)
+		if(head == null)
 		{
 			System.out.println("ERROR: List is empty.");
 			return;
 		}
 		
-		last = last.getLeft();
+		tail = tail.getLeft();
 		
-		if(last != null)
+		if(tail != null)
 		{
-			last.setRight(null);
+			tail.setRight(null);
 		}	
 	}
 }

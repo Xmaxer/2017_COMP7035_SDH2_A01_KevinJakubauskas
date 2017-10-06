@@ -6,7 +6,7 @@ public class MyDynamicQueue implements MyQueue {
 	//--------------------------------------------------
 	// Attributes
 	//--------------------------------------------------
-	private MyNode current = null;
+	private MyNode head = null;
 
 	//-------------------------------------------------------------------
 	// Basic Operation --> Check if MyQueue is empty: myCreateEmpty
@@ -20,7 +20,7 @@ public class MyDynamicQueue implements MyQueue {
 	//-------------------------------------------------------------------	
 	public boolean isEmpty(){
 
-		if(current == null)
+		if(head == null)
 		{
 			return true;
 		}
@@ -33,15 +33,13 @@ public class MyDynamicQueue implements MyQueue {
 	//-------------------------------------------------------------------
 	public int first(){
 
-		if(current == null)
+		if(head == null)
 		{
 			System.out.print("ERROR: MyQueue is empty.");
 			return -1;
 		}
-		else
-		{
-			return current.getInfo();
-		}
+		
+		return head.getInfo();
 	}
 
 	//-------------------------------------------------------------------
@@ -49,23 +47,25 @@ public class MyDynamicQueue implements MyQueue {
 	//-------------------------------------------------------------------
 	public void add(int element){
 
-		if(current == null)
+		MyNode newNode = new MyNode(element, null);
+		
+		if(head == null)
 		{
-			current = new MyNode(element, null);
+			head = newNode;
 		}
 		else
 		{
-			MyNode next = current.getNext();
-			MyNode previous = current;
-			
+			MyNode next = head.getNext();
+			MyNode previous = head;
+
 			while(next != null)
 			{
 				previous = next;
 				next = next.getNext();
 			}
-			
-			previous.setNext(new MyNode(element, null));
-			
+
+			previous.setNext(newNode);
+
 		}
 	}
 
@@ -74,13 +74,13 @@ public class MyDynamicQueue implements MyQueue {
 	//-------------------------------------------------------------------	
 	public void remove(){
 
-		if(current == null)
+		if(head == null)
 		{
 			System.out.println("ERROR: MyQueue is empty.");
 		}
 		else
 		{
-			current = current.getNext();
+			head = head.getNext();
 		}
 	}
 }
