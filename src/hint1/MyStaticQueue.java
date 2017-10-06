@@ -35,7 +35,7 @@ public class MyStaticQueue implements MyQueue {
 	// Basic Operation (Partial) --> Get first element from front of MyQueue: first
 	//-------------------------------------------------------------------
 	public int first(){
-		if(!isEmpty())
+		if(numItems > 0)
 		{
 			return items[0];
 		}
@@ -67,7 +67,7 @@ public class MyStaticQueue implements MyQueue {
 	//-------------------------------------------------------------------	
 	public void remove(){
 
-		if(isEmpty())
+		if(numItems == 0)
 		{
 			System.out.println("ERROR: MyQueue is empty.");
 		}
