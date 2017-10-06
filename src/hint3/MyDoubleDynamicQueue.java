@@ -95,15 +95,8 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 			System.out.println("ERROR: List is empty.");
 			return null;
 		}
-		MyDoubleLinkedNode<T> next = current.getRight();
-		MyDoubleLinkedNode<T> prev = current;
-		while(next != null)
-		{
-			prev = next;
-			next = next.getRight();
-		}
-
-		return prev.getInfo();
+		
+		return last.getInfo();
 
 	}
 
