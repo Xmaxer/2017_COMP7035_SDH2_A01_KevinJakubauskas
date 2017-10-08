@@ -33,7 +33,12 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	// Basic Operation (Partial) --> Get first element from front of MyQueue: first
 	//-------------------------------------------------------------------
 	public T first(){
-
+		
+		if(head == null)
+		{
+			System.out.println("ERROR: List is empty.");
+			return null;
+		}
 		return head.getInfo();
 	}
 
@@ -67,6 +72,10 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 			if(head != null)
 			{
 				head.setLeft(null);
+			}
+			else
+			{
+				tail = null;
 			}
 			/*if(current.getRight() != null)
 			{
@@ -134,6 +143,10 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 		if(tail != null)
 		{
 			tail.setRight(null);
-		}	
+		}
+		else
+		{
+			head = null;
+		}
 	}
 }
