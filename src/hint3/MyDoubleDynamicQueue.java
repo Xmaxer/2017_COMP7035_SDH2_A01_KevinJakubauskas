@@ -77,16 +77,6 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 			{
 				tail = null;
 			}
-			/*if(current.getRight() != null)
-			{
-				current.getRight().setLeft(null);
-				current = current.getRight();
-			}
-			else
-			{
-				current = null;
-				old = null;
-			}*/
 		}
 		else
 		{
@@ -113,7 +103,7 @@ public class MyDoubleDynamicQueue<T> implements MyQueue<T> {
 	// Basic Operation --> Add element to back of MyQueue: addByLast 
 	//-------------------------------------------------------------------
 	public void addByLast(T element){
-
+		
 		if(head == null)
 		{
 			head = new MyDoubleLinkedNode<T>(null, element, null);

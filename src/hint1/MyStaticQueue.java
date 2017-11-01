@@ -73,8 +73,8 @@ public class MyStaticQueue implements MyQueue {
 		}
 		else
 		{
-			//Reset value to negative 1
-			items[0] = -1;
+			/*//Reset value to negative 1
+			items[0] = -1;*/
 			
 			//Shift the rest of the items if there is more than 1 (No need to do if check, for loop won't start if 1 or less anyway)
 			for(int i = 0; i < (numItems - 1); i++)
